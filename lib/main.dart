@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 void main() {
   runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
     title: "Clever App",
     home: HomePage(),
   ));
@@ -48,34 +49,72 @@ class _HomePageState extends State<HomePage> {
             Center(
               child: Column(
                 children: [
-                  SizedBox(
-                    height: screenSize.height,
-                    width: screenSize.width,
+                  Center(
+                    child: SizedBox(
+                      height: screenSize.height / 1.3,
+                      width: screenSize.width / 2,
+                    ),
                   ),
-                  Row(
-                    children: [
-                      InkWell(
-                        onTap: () => const LoginPage(),
-                        child: const Text(
-                          'Sign Up',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w300,
-                            fontSize: 20.0,
-                            fontFamily: 'PoltawaskiNowy',
+                  Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // SizedBox(
+                        //   width: screenSize.width / 7,
+                        // ),
+                        Container(
+                          width: 99.0,
+                          height: 40.0,
+                          decoration: BoxDecoration(
+                            color: Colors.red[500],
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Center(
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const LoginPage()),
+                                );
+                              },
+                              child: const Text(
+                                'Sign Up',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 15.0,
+                                  fontFamily: 'PoltawaskiNowy',
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                      const InkWell(
-                        child: Text(
-                          'Log In',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w300,
-                            fontSize: 20.0,
-                            fontFamily: 'PoltawaskiNowy',
+                        SizedBox(
+                          width: screenSize.width / 5,
+                        ),
+                        Container(
+                          width: 99.0,
+                          height: 40.0,
+                          decoration: BoxDecoration(
+                            color: Colors.red[500],
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Center(
+                            child: InkWell(
+                              onTap: () => const LoginPage(),
+                              child: const Text(
+                                'Log in',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 15.0,
+                                  fontFamily: 'PoltawaskiNowy',
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -86,12 +125,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-// void returnLoginPage () {
-//   if () {
-
-//   }
-// }
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -107,18 +140,34 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRect(
-      child: BackdropFilter(
-        filter: ui.ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-        child: Container(
-          width: 200.0,
-          height: 200.0,
-          decoration: BoxDecoration(
-            color: Colors.grey.shade200.withOpacity(0.5),
-          ),
-          child: const Center(
-            child: Text('meee'),
-          ),
+    var screenSize = MediaQuery.of(context).size;
+    return Scaffold(
+      body: ColoredBox(
+        color: const Color.fromARGB(255, 255, 235, 224),
+        child: Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            PreferredSize(
+              preferredSize:
+                  Size(screenSize.width / 0.5, screenSize.height / 0.5),
+              child: const Image(image: AssetImage('assets/_image_modern.jpg')),
+            ),
+            ClipRect(
+              child: BackdropFilter(
+                filter: ui.ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                child: Container(
+                  width: 200.0,
+                  height: 200.0,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade200.withOpacity(0.5),
+                  ),
+                  child: const Center(
+                    child: Text('meee'),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
