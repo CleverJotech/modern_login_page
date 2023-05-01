@@ -172,14 +172,16 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       child: Row(
                         children: [
-                          const TextField(
-                            decoration: InputDecoration(
+                          TextField(
+                            controller: _textcontroller,
+                            decoration: const InputDecoration(
                               border: OutlineInputBorder(),
                               hintText: 'Enter gmail here',
                             ),
                           ),
-                          const TextField(
-                            decoration: InputDecoration(
+                          TextField(
+                            controller: _textcontroller,
+                            decoration: const InputDecoration(
                               border: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   width: 2.0,
@@ -199,6 +201,18 @@ class _LoginPageState extends State<LoginPage> {
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 8.0,
+                              fontFamily: 'PoltawaskiNowy',
+                            ),
+                          ),
+                          SizedBox(
+                            width: screenSize.width / 10,
+                            height: screenSize.height / 20,
+                          ),
+                          const Text(
+                            '&copy Immadominion 2023',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 6.0,
                               fontFamily: 'PoltawaskiNowy',
                             ),
                           ),
