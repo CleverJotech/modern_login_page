@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/services.dart';
 import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -161,8 +162,49 @@ class _LoginPageState extends State<LoginPage> {
                   decoration: BoxDecoration(
                     color: Colors.grey.shade200.withOpacity(0.5),
                   ),
-                  child: const Center(
-                    child: Text('meee'),
+                  child: Center(
+                    child: Container(
+                      width: screenSize.width / 1.5,
+                      height: screenSize.height / 1.5,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
+                      ),
+                      child: Row(
+                        children: [
+                          const TextField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: 'Enter gmail here',
+                            ),
+                          ),
+                          const TextField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  width: 2.0,
+                                  style: BorderStyle.solid,
+                                  color: Color.fromARGB(255, 200, 200, 200),
+                                ),
+                              ),
+                              hintText: 'Enter password here',
+                            ),
+                          ),
+                          SizedBox(
+                            width: screenSize.width / 2,
+                            height: screenSize.height / 5,
+                          ),
+                          const Text(
+                            'Sign in with gmail',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 8.0,
+                              fontFamily: 'PoltawaskiNowy',
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),
