@@ -200,7 +200,7 @@ class _LoginPageState extends State<LoginPage> {
                             'Sign in with gmail',
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
-                              fontSize: 8.0,
+                              fontSize: 10.0,
                               fontFamily: 'PoltawaskiNowy',
                             ),
                           ),
@@ -212,7 +212,7 @@ class _LoginPageState extends State<LoginPage> {
                             '&copy Immadominion 2023',
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
-                              fontSize: 6.0,
+                              fontSize: 8.0,
                               fontFamily: 'PoltawaskiNowy',
                             ),
                           ),
