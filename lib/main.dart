@@ -135,7 +135,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController _textcontroller = TextEditingController();
+  TextEditingController _gmailTextController = TextEditingController();
+  TextEditingController _passTextController = TextEditingController();
+
   String inputFromUser = "";
   String passFromUser = "";
 
@@ -165,36 +167,53 @@ class _LoginPageState extends State<LoginPage> {
                   child: Center(
                     child: Container(
                       width: screenSize.width / 1.5,
-                      height: screenSize.height / 1.5,
+                      height: screenSize.height / 2.5,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white,
                       ),
-                      child: Row(
+                      child: Column(
                         children: [
-                          TextField(
-                            controller: _textcontroller,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              hintText: 'Enter gmail here',
+                          SizedBox(
+                            width: screenSize.width / 10,
+                            height: screenSize.height / 40,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(13.0),
+                            child: TextField(
+                              controller: _gmailTextController,
+                              keyboardType: TextInputType.emailAddress,
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                hintText: 'Enter gmail here',
+                              ),
                             ),
                           ),
-                          TextField(
-                            controller: _textcontroller,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  width: 2.0,
-                                  style: BorderStyle.solid,
-                                  color: Color.fromARGB(255, 200, 200, 200),
+                          SizedBox(
+                            width: screenSize.width / 7,
+                            height: screenSize.height / 110,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(13.0),
+                            child: TextField(
+                              controller: _passTextController,
+                              obscureText: true,
+                              keyboardType: TextInputType.visiblePassword,
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    width: 2.0,
+                                    style: BorderStyle.solid,
+                                    color: Color.fromARGB(255, 200, 200, 200),
+                                  ),
                                 ),
+                                hintText: 'Enter password here',
                               ),
-                              hintText: 'Enter password here',
                             ),
                           ),
                           SizedBox(
                             width: screenSize.width / 2,
-                            height: screenSize.height / 5,
+                            height: screenSize.height / 20,
                           ),
                           const Text(
                             'Sign in with gmail',
@@ -206,15 +225,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           SizedBox(
                             width: screenSize.width / 10,
-                            height: screenSize.height / 20,
-                          ),
-                          const Text(
-                            '&copy Immadominion 2023',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 8.0,
-                              fontFamily: 'PoltawaskiNowy',
-                            ),
+                            height: screenSize.height / 50,
                           ),
                         ],
                       ),
