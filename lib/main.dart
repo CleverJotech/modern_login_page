@@ -73,6 +73,7 @@ class _HomePageState extends State<HomePage> {
                           child: Center(
                             child: InkWell(
                               onTap: () {
+                                _LoginPageState().myFocusNode.requestFocus();
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -91,13 +92,13 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         SizedBox(
-                          width: screenSize.width / 5,
+                          width: screenSize.width / 9,
                         ),
                         Container(
                           width: 99.0,
                           height: 40.0,
                           decoration: BoxDecoration(
-                            color: Colors.red[500],
+                            color: Colors.white60,
                             borderRadius: BorderRadius.circular(5),
                           ),
                           child: Center(
@@ -135,11 +136,25 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController _gmailTextController = TextEditingController();
-  TextEditingController _passTextController = TextEditingController();
+  final TextEditingController _gmailTextController = TextEditingController();
+  final TextEditingController _passTextController = TextEditingController();
+  late FocusNode myFocusNode;
 
   String inputFromUser = "";
   String passFromUser = "";
+
+  @override
+  void initState() {
+    myFocusNode = FocusNode();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _gmailTextController.dispose();
+    _passTextController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -159,15 +174,15 @@ class _LoginPageState extends State<LoginPage> {
               child: BackdropFilter(
                 filter: ui.ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
                 child: Container(
-                  width: 200.0,
-                  height: 200.0,
+                  // width: screenSize.width / 2,
+                  // height: screenSize.height / 1.5,
                   decoration: BoxDecoration(
                     color: Colors.grey.shade200.withOpacity(0.5),
                   ),
                   child: Center(
                     child: Container(
                       width: screenSize.width / 1.5,
-                      height: screenSize.height / 2.5,
+                      height: screenSize.height / 2.0,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white,
@@ -176,14 +191,17 @@ class _LoginPageState extends State<LoginPage> {
                         children: [
                           SizedBox(
                             width: screenSize.width / 10,
-                            height: screenSize.height / 40,
+                            height: screenSize.height / 50,
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(13.0),
+                            padding: const EdgeInsets.all(12.0),
                             child: TextField(
                               controller: _gmailTextController,
+                              autofocus: true,
+                              focusNode: myFocusNode,
                               keyboardType: TextInputType.emailAddress,
                               decoration: const InputDecoration(
+                                labelText: 'Gmail',
                                 border: OutlineInputBorder(),
                                 hintText: 'Enter gmail here',
                               ),
@@ -191,15 +209,16 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           SizedBox(
                             width: screenSize.width / 7,
-                            height: screenSize.height / 110,
+                            height: screenSize.height / 120,
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(13.0),
+                            padding: const EdgeInsets.all(12.0),
                             child: TextField(
                               controller: _passTextController,
                               obscureText: true,
                               keyboardType: TextInputType.visiblePassword,
                               decoration: const InputDecoration(
+                                labelText: 'Password',
                                 border: OutlineInputBorder(
                                   borderSide: BorderSide(
                                     width: 2.0,
@@ -213,10 +232,29 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           SizedBox(
                             width: screenSize.width / 2,
-                            height: screenSize.height / 20,
+                            height: screenSize.height / 25,
+                          ),
+                          InkWell(
+                            child: Container(
+                              width: screenSize.width / 2.5,
+                              height: screenSize.height / 15,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.red[400],
+                              ),
+                              child: const Center(
+                                child: Text(
+                                  'Sign In',
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: screenSize.width / 2,
+                            height: screenSize.height / 12,
                           ),
                           const Text(
-                            'Sign in with gmail',
+                            'Signing in with gmail',
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
                               fontSize: 10.0,
@@ -225,7 +263,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           SizedBox(
                             width: screenSize.width / 10,
-                            height: screenSize.height / 50,
+                            height: screenSize.height / 150,
                           ),
                         ],
                       ),
