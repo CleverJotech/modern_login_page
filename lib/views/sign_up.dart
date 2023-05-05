@@ -192,10 +192,6 @@ class _SignInPageState extends State<SignInPage> {
               color: Color.fromARGB(255, 244, 77, 74),
             );
           }
-          // default:
-          //   return const SpinKitWaveSpinner(
-          //     color: Color.fromARGB(255, 244, 77, 74),
-          //   );
         });
   }
 }

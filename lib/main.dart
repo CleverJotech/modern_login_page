@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:modern_login_page/views/sign_up.dart';
+import 'package:modern_login_page/views/log_in.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -100,7 +101,14 @@ class _HomePageState extends State<HomePage> {
                           ),
                           child: Center(
                             child: InkWell(
-                              onTap: () => const SignInPage(),
+                              onTap: () {
+                                // _LoginPageState().myFocusNode.requestFocus();
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const LogInPage()),
+                                );
+                              },
                               child: const Text(
                                 'Log in',
                                 style: TextStyle(
