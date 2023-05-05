@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
     var screenSize = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 235, 35, 35),
+        backgroundColor: const Color.fromARGB(202, 235, 35, 35),
         title: const Center(
             child: Text(
           'Clever Modern Login Page',
@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
                           width: 99.0,
                           height: 40.0,
                           decoration: BoxDecoration(
-                            color: Colors.red[500],
+                            color: const Color.fromARGB(202, 244, 67, 54),
                             borderRadius: BorderRadius.circular(5),
                           ),
                           child: Center(
@@ -98,7 +98,7 @@ class _HomePageState extends State<HomePage> {
                           width: 99.0,
                           height: 40.0,
                           decoration: BoxDecoration(
-                            color: Colors.white60,
+                            color: const Color.fromARGB(164, 237, 166, 52),
                             borderRadius: BorderRadius.circular(5),
                           ),
                           child: Center(
@@ -136,8 +136,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController _gmailTextController = TextEditingController();
-  final TextEditingController _passTextController = TextEditingController();
+  late TextEditingController _gmailTextController;
+  late TextEditingController _passTextController;
   late FocusNode myFocusNode;
 
   String inputFromUser = "";
@@ -145,6 +145,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void initState() {
+    _gmailTextController = TextEditingController();
+    _passTextController = TextEditingController();
     myFocusNode = FocusNode();
     super.initState();
   }
@@ -153,6 +155,7 @@ class _LoginPageState extends State<LoginPage> {
   void dispose() {
     _gmailTextController.dispose();
     _passTextController.dispose();
+    myFocusNode = FocusNode();
     super.dispose();
   }
 
