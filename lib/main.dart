@@ -3,7 +3,6 @@ import 'package:modern_login_page/views/sign_up.dart';
 import 'package:modern_login_page/views/log_in.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
     title: "Clever App",

@@ -41,6 +41,7 @@ class _SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsFlutterBinding.ensureInitialized();
     var screenSize = MediaQuery.of(context).size;
     return FutureBuilder(
         future: Firebase.initializeApp(
